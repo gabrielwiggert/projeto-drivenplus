@@ -7,8 +7,6 @@ import React from 'react'
 import { render } from 'react-dom'
 import { ThreeDots } from 'react-loader-spinner'
 
-import logotipo from "./../assets/imgs/logotipo.png";
-
 export default function Cadastro () {
 	const [email, setEmail] = useState("");
 	const [senha, setSenha] = useState("");
@@ -42,10 +40,6 @@ export default function Cadastro () {
 
     return (
         <>
-            <Logo>
-            <img src={logotipo} />
-            </Logo>
-
             <Form>
                 <form onSubmit={fazerCadastro}>
                     <input type="text" placeholder="nome" value={nome} onChange={e => setNome(e.target.value)} required disabled={loading}/>
@@ -58,21 +52,12 @@ export default function Cadastro () {
 
             <RedirectLogin>
                 <Link to="/">
-                    <h1>Já tem uma conta? Faça login!</h1>
+                    <h1>Já possui uma conta? Entre</h1>
                 </Link>
             </RedirectLogin>
         </>
     );
 }
-
-const Logo = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 68px;
-    margin-bottom: 30px;
-`;
 
 const RedirectLogin = styled.div`
     display: flex;
@@ -86,7 +71,7 @@ const RedirectLogin = styled.div`
     }
 
     h1 {
-        color: #52B6FF;
+        color: white;
         text-decoration: underline;
     }
 `;
@@ -97,20 +82,7 @@ const Form = styled.div`
         flex-direction: column;
         justify-content: center;
         align-items: center;
-    }
-
-    input:disabled {
-        background: grey;
-        color: darkgray;
-        opacity: 0.2;
-        cursor: progress;
-    }
-
-    button:disabled {
-        background: grey;
-        color: darkgray;
-        opacity: 0.2;
-        cursor: progress;
+        margin-top: 100px;
     }
 
     input {
@@ -120,9 +92,23 @@ const Form = styled.div`
         border-radius: 5px;
         border: 1px solid #D5D5D5;
         width: 80vw;
-        height: 45px;
-        margin-bottom: 6px;
+        height: 52px;
+        margin-bottom: 24px;
         font-family: 'Lexend Deca', sans-serif;
+    }
+
+    input:disabled{
+        background: grey;
+        color: darkgray;
+        opacity: 0.2;
+        cursor: progress;
+    }
+
+    button:disabled{
+        background: grey;
+        color: darkgray;
+        opacity: 0.2;
+        cursor: progress;
     }
 
     input::placeholder {
@@ -134,10 +120,10 @@ const Form = styled.div`
     button {
         border-style: none;
         border-radius: 5px;
-        margin-bottom: 15px;
+        margin-bottom: 20px;
         width: 80vw;
         height: 45px;
-        background-color: #52B6FF;
+        background-color: #FF4791;
         color: white;
         font-family: 'Lexend Deca', sans-serif;
         font-size: 21px;

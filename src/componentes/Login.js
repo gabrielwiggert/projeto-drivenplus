@@ -32,7 +32,12 @@ export default function Login () {
         requisicao.then((response) => {
             setUserData([response.data.token, response.data.image]);
             console.log(response.data);
-            navigate("/subscriptions");
+            if (response.data.membership == null) {
+                navigate("/subscriptions");
+            }
+            else {
+                navigate("/home");
+            }
         });
 
         requisicao.catch((err) => {
@@ -67,11 +72,11 @@ export default function Login () {
 }
 
 const Logo = styled.div`
+    margin-top: 134px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 68px;
     margin-bottom: 30px;
 `;
 
@@ -87,7 +92,7 @@ const Cadastro = styled.div`
     }
 
     h1 {
-        color: #52B6FF;
+        color: white;
         text-decoration: underline;
     }
 `;
@@ -97,6 +102,7 @@ const Form = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 100px;
 
     input {
         border-width: 1px;
@@ -105,8 +111,8 @@ const Form = styled.div`
         border-radius: 5px;
         border: 1px solid #D5D5D5;
         width: 80vw;
-        height: 45px;
-        margin-bottom: 6px;
+        height: 52px;
+        margin-bottom: 24px;
         font-family: 'Lexend Deca', sans-serif;
     }
 
@@ -133,10 +139,10 @@ const Form = styled.div`
     button {
         border-style: none;
         border-radius: 5px;
-        margin-bottom: 15px;
+        margin-bottom: 24px;
         width: 80vw;
         height: 45px;
-        background-color: #52B6FF;
+        background-color: #FF4791;
         color: white;
         font-family: 'Lexend Deca', sans-serif;
         font-size: 21px;
