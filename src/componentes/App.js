@@ -8,7 +8,7 @@ import Subscriptions from "./Subscriptions";
 import UserContext from "./UserContext";
 
 function App() {
-  const [userData, setUserData] = useState([null, null]);
+  const [userData, setUserData] = useState(null);
   
   return (
     <UserContext.Provider value={{userData, setUserData}}>

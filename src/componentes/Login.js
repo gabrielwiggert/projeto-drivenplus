@@ -30,7 +30,7 @@ export default function Login () {
 
 
         requisicao.then((response) => {
-            setUserData([response.data.token, response.data.image]);
+            setUserData(response.data.token);
             console.log(response.data);
             if (response.data.membership == null) {
                 navigate("/subscriptions");

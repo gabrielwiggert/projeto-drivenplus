@@ -6,21 +6,42 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import React from 'react'
 
-import plano from "./../assets/imgs/Plano.png";
+import UserContext from "./UserContext";
 
 export default function Subscriptions() {
+    const [subscriptionsData, setSubscriptionsData] = useState(null);
+    const { userData, setUserData } = useContext(UserContext);
+    const config = {
+        headers: {
+            "Authorization": `Bearer ${userData}`
+        }
+    }
+
+    useEffect(() => {
+        const requisicao = axios.get("https://mock-api.driven.com.br/api/v4/driven-plus/subscriptions/memberships", config);
+        requisicao.then((response) => {
+            console.log(response.data);
+            setSubscriptionsData(response.data);
+        });
+    
+        requisicao.catch((err) => {
+            console.log(err);
+            alert(err);
+        });
+    }, []);
+
     return(
         <Fullscreen>
             <h1>Escolha seu Plano</h1>
 
             <Plano>
-                <img src={plano} />
+                <img src={subscriptionsData[0].image} />
             </Plano>
             <Plano>
-                <img src={plano} />
+                <img src={subscriptionsData[1].image} />
             </Plano>
             <Plano>
-                <img src={plano} />
+                <img src={subscriptionsData[2].image} />
             </Plano>
         </Fullscreen>
     );
