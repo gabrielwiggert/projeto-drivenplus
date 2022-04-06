@@ -23,7 +23,7 @@ export default function Login () {
 
         setLoading(true);
 
-        const requisicao = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login", {
+        const requisicao = axios.post("https://mock-api.driven.com.br/api/v4/driven-plus/auth/login", {
             email: email,
             password: senha
         });
@@ -32,7 +32,7 @@ export default function Login () {
         requisicao.then((response) => {
             setUserData([response.data.token, response.data.image]);
             console.log(response.data);
-            navigate("/habitos");
+            navigate("/subscriptions");
         });
 
         requisicao.catch((err) => {
