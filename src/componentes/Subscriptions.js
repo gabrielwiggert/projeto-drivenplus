@@ -9,7 +9,7 @@ import React from 'react'
 import UserContext from "./UserContext";
 
 export default function Subscriptions() {
-    const [subscriptionsData, setSubscriptionsData] = useState(null);
+    const [subscriptionsData, setSubscriptionsData] = useState(false);
     const { userData, setUserData } = useContext(UserContext);
     const config = {
         headers: {
@@ -30,7 +30,7 @@ export default function Subscriptions() {
         });
     }, []);
 
-    return(
+    return subscriptionsData ? (
         <Fullscreen>
             <h1>Escolha seu Plano</h1>
 
@@ -44,7 +44,7 @@ export default function Subscriptions() {
                 <img src={subscriptionsData[2].image} />
             </Plano>
         </Fullscreen>
-    );
+    ) : "Carregando...";
 }
 
 const Plano = styled.div`
