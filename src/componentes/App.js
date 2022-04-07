@@ -10,7 +10,7 @@ import UserContext from "./UserContext";
 
 function App() {
   const [userData, setUserData] = useState(null);
-  const [userSubscription, setUserSubscription] = useState(null);
+  const [userSubscription, setUserSubscription] = useState("");
   
   return (
     <UserContext.Provider value={{userData, setUserData, userSubscription, setUserSubscription}}>

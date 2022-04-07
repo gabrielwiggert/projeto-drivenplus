@@ -10,7 +10,6 @@ import vector from "./../assets/imgs/Vector.png";
 import listvector from "./../assets/imgs/listvector.png";
 import moneyvector from "./../assets/imgs/moneyvector.png";
 import CreditCard from "./CreditCard";
-import Confirmation from "./Confirmation";
 import UserContext from "./UserContext";
 
 export default function SubscriptionsId() {
@@ -68,8 +67,6 @@ export default function SubscriptionsId() {
             </Info>
 
             <CreditCard membershipId={perks[0].membershipId}></CreditCard>
-            <Confirmation></Confirmation>
-
         </Fullscreen>
     ) : "Carregando...";
 }

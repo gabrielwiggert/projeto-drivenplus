@@ -19,6 +19,7 @@ export default function CreditCard(props) {
     const navigate = useNavigate();
     const { userData, setUserData } = useContext(UserContext);
     const { userSubscription, setUserSubscription } = useContext(UserContext);
+    const [state, setState] = useState(""); //estado auxiliar para forçar re-render. por algum motivo, não estava atualizando sem isso :|
 
     const config = {
         headers: {
@@ -26,34 +27,55 @@ export default function CreditCard(props) {
         }
     }
 
-	function fazerCadastro (event) {
+	function comprar(event) {
 		event.preventDefault();
+        setUserSubscription("confirmation");
+        setState("confirmation");
+	}
 
-        setLoading(true);
+    function confirmarCompra(event) {
+        event.preventDefault();
 
-            const requisicao = axios.post("https://mock-api.driven.com.br/api/v4/driven-plus/subscriptions", {
-                membershipId: props.membershipId,
-                cardName: nome,
-                cardNumber: digits,
-                securityNumber: securityNumber,
-                expirationDate: expirationDate
-            }, config);
+        const requisicao = axios.post("https://mock-api.driven.com.br/api/v4/driven-plus/subscriptions", {
+            membershipId: props.membershipId,
+            cardName: nome,
+            cardNumber: digits,
+            securityNumber: securityNumber,
+            expirationDate: expirationDate
+        }, config);
 
         requisicao.then((response) => {
             console.log(response.data);
             setUserSubscription(response.data);
-            //navigate("/");
+            navigate("/home");
         });
 
         requisicao.catch((err) => {
             console.log(err);
             alert(err);
         });
-	}
+    }
 
-    return(
+    return (userSubscription == "confirmation") ? (
+        <>
+        <ConfirmationContainer>
+            <Confirmation />
+        </ConfirmationContainer>
+
         <Form>
-        <form onSubmit={fazerCadastro}>
+        <form>
+            <input type="text" placeholder="Nome impresso no cartão" disabled={true}/>
+            <input type="number" placeholder="Dígitos do cartão" value={digits} onChange={e => setDigits(e.target.value)} required disabled={loading}/>
+            <input type="number" placeholder="Código de segurança" disabled={true}/>
+            <input type="number" placeholder="Validade" disabled={true}/>
+            <button disabled><ThreeDots color="#fff" height={'1.8rem'} width={'100%'} /></button>
+        </form>
+        </Form>
+        </>
+    ) : (
+        <>
+        <Form>
+        <form onSubmit={comprar}>
             <input type="text" placeholder="Nome impresso no cartão" value={nome} onChange={e => setNome(e.target.value)} required disabled={loading}/>
             <input type="number" placeholder="Dígitos do cartão" value={digits} onChange={e => setDigits(e.target.value)} required disabled={loading}/>
             <input type="number" placeholder="Código de segurança" value={securityNumber} onChange={e => setSecurityNumber(e.target.value)} required disabled={loading}/>
@@ -61,8 +83,27 @@ export default function CreditCard(props) {
             {loading ? <button disabled><ThreeDots color="#fff" height={'1.8rem'} width={'100%'} /></button> : <button type="submit">Cadastrar</button>}
         </form>
         </Form>
+        </>
     );
+
+    function Confirmation() {
+        return(
+            <Form>
+            <form onSubmit={confirmarCompra}>
+                <button type="submit">Confirmar compra</button>
+            </form>
+            </Form>
+        );
+    }
 }
+
+const ConfirmationContainer = styled.div`
+    position: fixed;
+    width: 150px;
+    height: 150px;
+    background-color: white;
+    color: black;
+`;
 
 const Form = styled.div`
     form {
