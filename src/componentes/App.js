@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useContext } from "react";
 
 import Login from "./Login";
 import Cadastro from "./Cadastro";
