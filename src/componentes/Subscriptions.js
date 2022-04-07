@@ -34,21 +34,47 @@ export default function Subscriptions() {
         <Fullscreen>
             <h1>Escolha seu Plano</h1>
 
-            <Plano>
-                <img src={subscriptionsData[0].image} />
-            </Plano>
-            <Plano>
-                <img src={subscriptionsData[1].image} />
-            </Plano>
-            <Plano>
-                <img src={subscriptionsData[2].image} />
-            </Plano>
+            <Link to={`/subscriptions/${subscriptionsData[0].id}`}>
+                <Plano>
+                    <img src={subscriptionsData[0].image} />
+                    <h2>R$ {subscriptionsData[0].price}</h2>
+                </Plano>
+            </Link>
+
+            <Link to={`/subscriptions/${subscriptionsData[1].id}`}>
+                <Plano>
+                    <img src={subscriptionsData[1].image} />
+                    <h2>R$ {subscriptionsData[1].price}</h2>
+                </Plano>
+            </Link>
+
+            <Link to={`/subscriptions/${subscriptionsData[2].id}`}>
+                <Plano>
+                    <img src={subscriptionsData[2].image} />
+                    <h2>R$ {subscriptionsData[2].price}</h2>
+                </Plano>
+            </Link>
         </Fullscreen>
     ) : "Carregando...";
 }
 
 const Plano = styled.div`
     margin-bottom: 10px;
+    height: 180px;
+    width: 290px;
+    border: 3px solid #7E7E7E;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 16px;
+    h2 {
+        font-size: 24px;
+        color: white;
+        font-weight: 700;
+        font-style: bold;
+        margin-bottom: 24px;
+    }
 `;
 
 const Fullscreen = styled.div`
@@ -57,6 +83,10 @@ const Fullscreen = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    a:link {
+        text-decoration: none;
+    }
 
     h1 {
         color: white;
