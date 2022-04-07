@@ -19,7 +19,7 @@ export default function Home(props) {
             <Greetings><h1>Olá, {userSubscription.name}</h1></Greetings>
 
             <Features>
-                {perks.map((perk) => <a src={perk.link}><button>{perk.title}</button></a>)}
+                {perks.map((perk) => <a href={perk.link} key={perk.id}><button>{perk.title}</button></a>)}
             </Features>
             
         </Fullscreen>
@@ -31,7 +31,7 @@ const Features = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
+
     button {
         border-style: none;
         border-radius: 8px;
