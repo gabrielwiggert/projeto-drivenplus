@@ -22,9 +22,39 @@ export default function Home(props) {
                 {perks.map((perk) => <a href={perk.link} key={perk.id}><button>{perk.title}</button></a>)}
             </Features>
             
+            <Footer>
+                <button>Mudar plano</button>
+                <button>Cancelar plano</button>
+            </Footer>
         </Fullscreen>
     );
 }
+
+const Footer = styled.div`
+    position: fixed;
+    bottom: 12px;
+    left: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    button {
+        border-style: none;
+        border-radius: 8px;
+        margin-bottom: 8px;
+        width: 80vw;
+        height: 52px;
+        background-color: #FF4791;
+        color: white;
+        font-family: 'Lexend Deca', sans-serif;
+        font-size: 14px;
+    }
+
+    button:nth-child(2) {
+        background-color: #FF4747;
+    }
+`;
 
 const Features = styled.div`
     display: flex;
