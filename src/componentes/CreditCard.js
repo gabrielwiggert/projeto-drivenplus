@@ -67,8 +67,11 @@ export default function CreditCard(props) {
         <form>
             <input type="text" placeholder="Nome impresso no cartão" disabled={true}/>
             <input type="number" placeholder="Dígitos do cartão" value={digits} onChange={e => setDigits(e.target.value)} required disabled={loading}/>
-            <input type="number" placeholder="Código de segurança" disabled={true}/>
-            <input type="number" placeholder="Validade" disabled={true}/>
+            <Flex>
+                <input type="number" placeholder="Código de segurança" disabled={true}/>
+                <SpaceBetween />
+                <input type="number" placeholder="Validade" disabled={true}/>
+            </Flex>
             <button disabled><ThreeDots color="#fff" height={'1.8rem'} width={'100%'} /></button>
         </form>
         </Form>
@@ -79,8 +82,11 @@ export default function CreditCard(props) {
         <form onSubmit={comprar}>
             <input type="text" placeholder="Nome impresso no cartão" value={nome} onChange={e => setNome(e.target.value)} required disabled={loading}/>
             <input type="number" placeholder="Dígitos do cartão" value={digits} onChange={e => setDigits(e.target.value)} required disabled={loading}/>
-            <input type="number" placeholder="Código de segurança" value={securityNumber} onChange={e => setSecurityNumber(e.target.value)} required disabled={loading}/>
-            <input type="number" placeholder="Validade" value={expirationDate} onChange={e => setExpirationDate(e.target.value)} required disabled={loading}/>
+            <Flex>
+                <input type="number" placeholder="Código de segurança" value={securityNumber} onChange={e => setSecurityNumber(e.target.value)} required disabled={loading}/>
+                <SpaceBetween />
+                <input type="number" placeholder="Validade" value={expirationDate} onChange={e => setExpirationDate(e.target.value)} required disabled={loading}/>
+            </Flex>
             {loading ? <button disabled><ThreeDots color="#fff" height={'1.8rem'} width={'100%'} /></button> : <button type="submit">Cadastrar</button>}
         </form>
         </Form>
@@ -107,6 +113,21 @@ export default function CreditCard(props) {
         setUserSubscription("");
     }
 }
+
+const SpaceBetween = styled.div`
+    width: 8px;
+`;
+
+const Flex = styled.div`
+    box-sizing: border-box !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+
+    input {
+        width: 145px !important;
+    }
+`;
 
 const FormPop = styled.div`
     display: flex;
@@ -196,8 +217,8 @@ const Form = styled.div`
 
     input::placeholder {
         padding-left: 11px;
-        font-size: 20px;
-        color: #DBDBDB;
+        font-size: 14px;
+        color: #7E7E7E;
     }
 
     button {

@@ -136,8 +136,8 @@ const Form = styled.div`
 
     input::placeholder {
         padding-left: 11px;
-        font-size: 20px;
-        color: #DBDBDB;
+        font-size: 14px;
+        color: #7E7E7E;
     }
 
     button {

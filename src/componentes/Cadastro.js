@@ -42,10 +42,10 @@ export default function Cadastro () {
         <>
             <Form>
                 <form onSubmit={fazerCadastro}>
-                    <input type="text" placeholder="nome" value={nome} onChange={e => setNome(e.target.value)} required disabled={loading}/>
-                    <input type="number" placeholder="cpf" value={cpf} onChange={e => setCpf(e.target.value)} required disabled={loading}/>
-                    <input type="email" placeholder="email" value={email} onChange={e => setEmail(e.target.value)} required disabled={loading}/>
-                    <input type="password" placeholder="senha" value={senha} onChange={e => setSenha(e.target.value)} required disabled={loading}/>
+                    <input type="text" placeholder="Nome" value={nome} onChange={e => setNome(e.target.value)} required disabled={loading}/>
+                    <input type="number" placeholder="CPF" value={cpf} onChange={e => setCpf(e.target.value)} required disabled={loading}/>
+                    <input type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} required disabled={loading}/>
+                    <input type="password" placeholder="Senha" value={senha} onChange={e => setSenha(e.target.value)} required disabled={loading}/>
                     {loading ? <button disabled><ThreeDots color="#fff" height={'1.8rem'} width={'100%'} /></button> : <button type="submit">Cadastrar</button>}
                 </form>
             </Form>
@@ -113,8 +113,8 @@ const Form = styled.div`
 
     input::placeholder {
         padding-left: 11px;
-        font-size: 20px;
-        color: #DBDBDB;
+        font-size: 14px;
+        color: #7E7E7E;
     }
 
     button {
