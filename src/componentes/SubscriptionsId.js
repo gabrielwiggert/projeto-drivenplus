@@ -88,6 +88,7 @@ const Info = styled.div`
     margin-bottom: 20px;
     color: white;
     font-weight: 400;
+    margin-left: -65px;
 
     li {
         list-style-type: none;

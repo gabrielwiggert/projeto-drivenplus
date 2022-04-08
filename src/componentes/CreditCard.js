@@ -127,6 +127,10 @@ const Flex = styled.div`
     input {
         width: 145px !important;
     }
+
+    input::placeholder {
+        padding-left: 5px !important;
+    }
 `;
 
 const FormPop = styled.div`
