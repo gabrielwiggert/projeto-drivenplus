@@ -97,6 +97,14 @@ const Info = styled.div`
 `;
 
 const Top = styled.div`
+    h1 {
+        color: white;
+        font-size: 32px;
+        font-weight: 700;
+        font-style: bold;
+        margin-bottom: 10px;
+    }
+    
     img:nth-child(1) {
         position: fixed;
         top: 22px;
@@ -115,12 +123,4 @@ const Fullscreen = styled.div`
     justify-content: center;
     align-items: center;
     padding: 12px;
-
-    h1 {
-        color: white;
-        font-size: 32px;
-        font-weight: 700;
-        font-style: bold;
-        margin-bottom: 10px;
-    }
 `;

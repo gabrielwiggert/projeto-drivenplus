@@ -9,6 +9,7 @@ import { render } from 'react-dom'
 import { ThreeDots } from 'react-loader-spinner'
 
 import UserContext from "./UserContext";
+import closeicon from "./../assets/imgs/closeicon.png";
 
 export default function CreditCard(props) {
     const [securityNumber, setSecurityNumber] = useState("");
@@ -88,19 +89,66 @@ export default function CreditCard(props) {
 
     function Confirmation() {
         return(
-            <Form>
-            <form onSubmit={confirmarCompra}>
-                <button type="submit">Confirmar compra</button>
-            </form>
-            </Form>
+            <>
+                <img src={closeicon} onClick={closePop}/>
+                <FormPop>
+                    <h1>Tem certeza que deseja assinar o plano Driven Plus (R$ 39,99)?</h1>
+
+                    <form onSubmit={confirmarCompra}>
+                        <button type="reset" onClick={closePop}>Não</button>
+                        <button type="submit">SIM</button>
+                    </form>
+                </FormPop>
+            </>
         );
     }
+
+    function closePop() {
+        setUserSubscription("");
+    }
 }
+
+const FormPop = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 12px;
+    color: black;
+
+    h1 {
+        color: black;
+        font-size: 18px;
+        font-weight: 700;
+        padding-top: 30px;
+        text-align: center;
+        margin-bottom: 47px;
+    }
+
+    button {
+        border-style: none;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        width: 95px;
+        height: 52px;
+        background-color: #FF4791;
+        color: white;
+        font-family: 'Lexend Deca', sans-serif;
+        font-size: 21px;
+    }
+
+    button:first-child {
+        background-color: #CECECE;
+        margin-right: 14px;
+    }
+`;
 
 const ConfirmationContainer = styled.div`
     z-index: 1;
     background-color: white;
     color: black;
+    text-decoration: black;
 
     position: fixed;
     width: 248px;
