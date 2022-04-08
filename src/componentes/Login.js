@@ -17,6 +17,7 @@ export default function Login () {
     const [loading, setLoading] = useState(false);
     const { userData, setUserData } = useContext(UserContext);
     const { userSubscription, setUserSubscription } = useContext(UserContext);
+    const { userName, setUserName } = useContext(UserContext);
     const navigate = useNavigate();
 
 	function fazerLogin (event) {
@@ -32,6 +33,7 @@ export default function Login () {
 
         requisicao.then((response) => {
             setUserData(response.data.token);
+            setUserName(response.data.name);
             setUserSubscription(response.data);
             console.log(response.data);
             if (response.data.membership == null) {

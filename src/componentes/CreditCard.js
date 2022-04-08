@@ -98,11 +98,18 @@ export default function CreditCard(props) {
 }
 
 const ConfirmationContainer = styled.div`
-    position: fixed;
-    width: 150px;
-    height: 150px;
+    z-index: 1;
     background-color: white;
     color: black;
+
+    position: fixed;
+    width: 248px;
+    height: 210px;
+    left: 64px;
+    top: 229px;
+
+    background: #FFFFFF;
+    border-radius: 12px;
 `;
 
 const Form = styled.div`
